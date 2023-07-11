@@ -13,7 +13,7 @@
 
 <body>
     <div>
-        <form method="POST" action="/update/<%= user._id %>" autocomplete="off">
+        <form method="POST" action="/users/update/<%= user._id %>" autocomplete="off">
             <div class="form-group">
                 <label for="user">Update your profile</label>
                 <input type="text" name="name" class="form-control" value="<%= user.name %>" />

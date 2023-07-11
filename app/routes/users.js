@@ -1,15 +1,19 @@
 const express = require('express');
-const User = require('../models/User');
 const fs = require('fs');
+
+const User = require('../models/User');
+const Image = require('../models/Image');
 
 const router = express.Router();
 
 // Index page route
 router.get('/', async (req, res) => {
 
-    const users = await User.find()
+    const users = await User.find();
+    const images = await Image.find();
     res.render("index", {
-        profiles: (Object.keys(users).length > 0 ? users : {})
+        profiles: (Object.keys(users).length > 0 ? users : {}),
+        images: (Object.keys(images).length > 0 ? images : {})
     });
 });
 

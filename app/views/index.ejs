@@ -33,13 +33,13 @@
                                                         <%= user.name %>
                                                     </div>
                                                 </div>
-                                                <a class="btn btn-primary" href="/update/<%= user._id %>">Update
+                                                <a class="btn btn-primary" href="/users/update/<%= user._id %>">Update
                                                     profile</a>
-                                                <a class="btn btn-primary" href="/show/<%= user._id %>">Read
+                                                <a class="btn btn-primary" href="/users/show/<%= user._id %>">Read
                                                     profile</a>
                                                 <a href="javascript:;" onclick="this.children[0].submit()"
                                                     class="text-danger">
-                                                    <form method="POST" action="/delete/<%= user._id %>">
+                                                    <form method="POST" action="/users/delete/<%= user._id %>">
                                                         <input type="hidden" name="_key" value="<%= user._id %>" />
                                                     </form>
                                                     <i class="fa fa-trash-o"></i>
@@ -54,8 +54,12 @@
                         </div>
                     </div>
                     <hr>
-                    <a class="btn btn-primary" href="/new">New profile</a>
-                    <img class="d-block mx-auto mb-4" src="/image" alt="">
+                    <a class="btn btn-primary" href="/users/new">New profile</a>
+                    <% if(Object.keys(images).length> 0) { %>
+                        <% images.forEach(image => { %>
+                            <img src=<%= image.image.srcUrl %> alt="">
+                        <% }) %>
+                    <% } %>
                 </div>
             </div>
         </div>
