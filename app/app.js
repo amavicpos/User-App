@@ -28,10 +28,7 @@ mongoose
 
 // FIRST USER
 const initialImage1 = new Image({
-    name: 'anna.jpg',
-    image: {
-        srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '\\images\\anna.jpg')).toString('base64'))}`
-    }
+    name: 'anna.jpg'
 });
 initialImage1.save();
 const initialProfile1 = new User({
