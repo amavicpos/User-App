@@ -61,14 +61,14 @@ router.post('/', upload.single('image'), (req, res) => {
         var newProfile = new User({
             name: req.body.name,
             email: req.body.email,
-            interest: req.body.interest,
+            interests: req.body.interests,
             picture: newImage._id
         });
     } else {
         var newProfile = new User({
             name: req.body.name,
             email: req.body.email,
-            interest: req.body.interest
+            interests: req.body.interests
         });
     }
 
@@ -119,7 +119,7 @@ router.post('/update/:id', upload.single('image'), (req, res) => {
         User.findByIdAndUpdate(userId, {
             name: req.body.name,
             email: req.body.email,
-            interest: req.body.interest,
+            interests: req.body.interests,
             picture: newImage._id
             })
             .then(() => {
@@ -134,7 +134,7 @@ router.post('/update/:id', upload.single('image'), (req, res) => {
         User.findByIdAndUpdate(userId, {
             name: req.body.name,
             email: req.body.email,
-            interest: req.body.interest
+            interests: req.body.interests
             })
             .then(() => {
                 res.redirect('/');

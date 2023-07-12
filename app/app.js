@@ -34,7 +34,7 @@ initialImage1.save();
 const initialProfile1 = new User({
     name: 'Anna Smith',
     email: 'anna.smith@example.com',
-    interest: 'coding'
+    interests: 'coding'
 });
 initialProfile1.save();
 User.collection.drop();
@@ -51,7 +51,7 @@ initialImage.save();
 const initialProfile = new User({
     name: 'Anna Smith',
     email: 'anna.smith@example.com',
-    interest: 'coding',
+    interests: 'coding',
     picture: initialImage._id
 });
 initialProfile.save();
