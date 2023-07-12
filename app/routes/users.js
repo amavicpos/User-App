@@ -10,10 +10,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     const users = await User.find();
-    const images = await Image.find();
     res.render("index", {
-        profiles: (Object.keys(users).length > 0 ? users : {}),
-        images: (Object.keys(images).length > 0 ? images : {})
+        profiles: (Object.keys(users).length > 0 ? users : {})
     });
 });
 
@@ -42,7 +40,7 @@ router.post('/', (req, res) => {
 // READ
 router.get('/show/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id).populate('picture');
         res.render("show", { user });
     } catch (error) {
         console.error('Error rendering view:', error);

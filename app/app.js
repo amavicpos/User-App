@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const app = express();
 // npm install mongoose body-parser express ejs fs multer path
+
+const User = require('./models/User');
+const Image = require('./models/Image');
 
 // ROUTE
 const UsersRouter = require('./routes/users');
 const ImagesRouter = require('./routes/images');
-const User = require('./models/User');
 
 // EJS ENGINE
 app.set('view engine', 'ejs');
@@ -23,18 +27,35 @@ mongoose
     .catch(error => console.log(error));
 
 // FIRST USER
+const initialImage1 = new Image({
+    name: 'anna.jpg',
+    image: {
+        srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '\\images\\anna.jpg')).toString('base64'))}`
+    }
+});
+initialImage1.save();
 const initialProfile1 = new User({
     name: 'Anna Smith',
     email: 'anna.smith@example.com',
     interest: 'coding'
 });
 initialProfile1.save();
+Image.collection.drop();
 User.collection.drop();
+
+const initialImage = new Image({
+    name: 'anna.jpg',
+    image: {
+        srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '\\images\\anna.jpg')).toString('base64'))}`
+    }
+});
+initialImage.save();
 
 const initialProfile = new User({
     name: 'Anna Smith',
     email: 'anna.smith@example.com',
-    interest: 'coding'
+    interest: 'coding',
+    picture: initialImage._id
 });
 initialProfile.save();
 

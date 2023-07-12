@@ -13,6 +13,10 @@ const UserSchema = new Schema({
     interest: {
         type: String,
         required: true
+    },
+    picture: {
+        type: Schema.Types.ObjectId,
+        ref: 'images'
     }
 });
 

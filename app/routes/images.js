@@ -25,7 +25,6 @@ router.post('/upload', upload.single('image'), (req, res) => {
     if (!req.file) {
       return res.status(400).send('No file was uploaded.');
     }
-    console.log(path.join(__dirname, '..\\', req.file.path));
     const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
     const base64String = Buffer.from(fileData).toString('base64');
     const mimeType = req.file.mimetype; // Replace with the appropriate MIME type for your file

@@ -18,14 +18,14 @@
                 <%= user.name %><br>
                 <%= user.email %><br>
                 <%= user.interest %><br>
+                <img src=<%= user.picture.image.srcUrl %> alt="">
             </div>
         </div>
-        <form action="/images/upload" method="POST" enctype="multipart/form-data">
+        <!-- <form action="/images/upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="image" accept="image/*">
             <button type="submit">Upload</button>
-        </form>
+        </form> -->
         <a class="btn btn-primary" href="/users">All profiles</a>
-        <!-- <img class="d-block mx-auto mb-4" src="/images/upload" alt=""> -->
     </div>
 </body>
 
