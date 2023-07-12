@@ -1,24 +1,39 @@
 <% layout('layouts/boilerplate') %>
 <div class="container">
     <div class="row align-items-center justify-content-around">
-        <div class="col-md-6">
-            <% if (user.picture) { %>
+        <% if (user.picture) { %>
+            <div class="col-md-6">
                 <img src=<%= user.picture.image.srcUrl %> class="img-fluid" style="max-width: 100%;" alt=""/>
-            <% } %>
-        </div>
-        <div class="col-5">
-            <div class="row">
-                <h1><%= user.name %></h1>
             </div>
-            <div class="row">
-                Email: <%= user.email %>
+            <div class="col-5">
+                <div class="row">
+                    <h1><%= user.name %></h1>
+                </div>
+                <div class="row">
+                    Email: <%= user.email %>
+                </div>
+                <div class="row">
+                    Interests: <%= user.interests %>
+                </div>
+                <div class="mt-3 row">
+                    <a class="btn btn-primary" href="/users">All profiles</a>
+                </div>
             </div>
-            <div class="row">
-                Interests: <%= user.interests %>
+        <% } else { %>
+            <div class="col-12">
+                <div class="row">
+                    <h1><%= user.name %></h1>
+                </div>
+                <div class="row">
+                    Email: <%= user.email %>
+                </div>
+                <div class="row">
+                    Interests: <%= user.interests %>
+                </div>
+                <div class="mt-3 row">
+                    <a class="btn btn-primary" href="/users">All profiles</a>
+                </div>
             </div>
-            <div class="mt-3 row">
-                <a class="btn btn-primary" href="/users">All profiles</a>
-            </div>
-        </div>
+        <% } %>
     </div>
 </div>
