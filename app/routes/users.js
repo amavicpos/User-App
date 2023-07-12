@@ -91,26 +91,59 @@ router.get('/show/:id', async (req, res) => {
 // UPDATE
 router.get('/update/:id', async (req, res) => {
 
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate('picture');
     res.render("edit", { user });
 });
 
-router.post('/update/:id', (req, res) => {
+router.post('/update/:id', upload.single('image'), (req, res) => {
     const userId = req.params.id;
 
-    // Update the item in the database
-    User.findByIdAndUpdate(userId, {
-        name: req.body.name,
-        email: req.body.email,
-        interest: req.body.interest
-        })
-        .then(() => {
-            res.redirect('/');
-        })
-        .catch((error) => {
-            console.error('Error updating user:', error);
-            res.status(500).send('Internal Server Error');
+    if (req.file) {
+        // Save input image as new database data
+        const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
+        const base64String = Buffer.from(fileData).toString('base64');
+        const mimeType = req.file.mimetype; // Replace with the appropriate MIME type for your file
+        const fileSource = `data:${mimeType};base64,${base64String}`;
+        // File was successfully uploaded and stored
+        const newImage = new Image({
+            name: req.file.originalname,
+            image: {
+                data: req.file.filename,
+                contentType: mimeType,
+                srcUrl: fileSource
+            }
         });
+        newImage.save();
+
+        // Update the item in the database
+        User.findByIdAndUpdate(userId, {
+            name: req.body.name,
+            email: req.body.email,
+            interest: req.body.interest,
+            picture: newImage._id
+            })
+            .then(() => {
+                res.redirect('/');
+            })
+            .catch((error) => {
+                console.error('Error updating user:', error);
+                res.status(500).send('Internal Server Error');
+            });
+    } else {
+        // Update the item in the database
+        User.findByIdAndUpdate(userId, {
+            name: req.body.name,
+            email: req.body.email,
+            interest: req.body.interest
+            })
+            .then(() => {
+                res.redirect('/');
+            })
+            .catch((error) => {
+                console.error('Error updating user:', error);
+                res.status(500).send('Internal Server Error');
+            });
+    }
 });
 
 // DELETE
