@@ -18,13 +18,11 @@
                 <%= user.name %><br>
                 <%= user.email %><br>
                 <%= user.interest %><br>
-                <img src=<%= user.picture.image.srcUrl %> alt="">
+                <% if (user.picture) { %>
+                    <img src=<%= user.picture.image.srcUrl %> alt="">
+                <% } %>
             </div>
         </div>
-        <!-- <form action="/images/upload" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*">
-            <button type="submit">Upload</button>
-        </form> -->
         <a class="btn btn-primary" href="/users">All profiles</a>
     </div>
 </body>

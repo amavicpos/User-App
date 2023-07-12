@@ -7,6 +7,8 @@ const Image = require('../models/Image');
 
 const router = express.Router();
 
+// Currently not in use
+
 // STORAGE
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

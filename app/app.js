@@ -37,8 +37,8 @@ const initialProfile1 = new User({
     interest: 'coding'
 });
 initialProfile1.save();
-Image.collection.drop();
 User.collection.drop();
+Image.collection.drop();
 
 const initialImage = new Image({
     name: 'anna.jpg',
