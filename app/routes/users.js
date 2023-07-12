@@ -32,15 +32,6 @@ router.get('/', async (req, res) => {
 });
 
 // CREATE
-router.get('/new', (req, res) => {
-    try {
-        res.render("new");
-    } catch (error) {
-        console.error('Error rendering view:', error);
-        res.status(500).send('Error rendering view');
-    }
-});
-
 router.post('/', upload.single('image'), (req, res) => {
     if (req.file) {
         const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
