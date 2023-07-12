@@ -3,6 +3,7 @@ const bodyParse = require('body-parser');
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const app = express();
 // npm install mongoose body-parser express ejs fs multer path
 
@@ -14,6 +15,7 @@ const UsersRouter = require('./routes/users');
 const ImagesRouter = require('./routes/images');
 
 // EJS ENGINE
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 
 app.use(bodyParse.json());

@@ -1,34 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User App</title>
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-    <div>
-        <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="user">New profile</label><br>
-                Name:
-                <input type="text" name="name" class="form-control" />
-                Email:
-                <input type="text" name="email" class="form-control" />
-                Interests:
-                <input type="text" name="interests" class="form-control" />
-                Picture:
-                <input type="file" name="image" accept="image/*">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <a class="btn btn-primary" href="/users">All profiles</a>
+<% layout('layouts/boilerplate') %>
+<form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="user">New profile</label><br>
+        Name:
+        <input type="text" name="name" class="form-control" />
+        Email:
+        <input type="text" name="email" class="form-control" />
+        Interests:
+        <input type="text" name="interests" class="form-control" />
+        Picture:
+        <input type="file" name="image" accept="image/*">
     </div>
-</body>
-
-</html>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a class="btn btn-primary" href="/users">All profiles</a>
