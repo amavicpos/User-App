@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const app = express();
-// npm install mongoose body-parser express ejs fs multer path
+// npm install mongoose body-parser express ejs fs multer path ejs-mate
 
 const User = require('./models/User');
 const Image = require('./models/Image');

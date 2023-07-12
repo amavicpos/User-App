@@ -1,13 +1,28 @@
 <% layout('layouts/boilerplate') %>
 <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="user">New profile</label><br>
-        Name:
-        <input type="text" name="name" class="form-control" />
-        Email:
-        <input type="text" name="email" class="form-control" />
-        Interests:
-        <input type="text" name="interests" class="form-control" />
+        <label for="user">New profile</label>
+        <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" name="name" class="form-control" required autofocus />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input type="text" name="email" class="form-control" required />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="interests">Interests</label>
+            <input type="text" name="interests" class="form-control" required />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
         Picture:
         <input type="file" name="image" accept="image/*">
     </div>
