@@ -15,10 +15,14 @@
     <div>
         <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="user">New profile</label>
+                <label for="user">New profile</label><br>
+                Name:
                 <input type="text" name="name" class="form-control" />
+                Email:
                 <input type="text" name="email" class="form-control" />
+                Interests:
                 <input type="text" name="interests" class="form-control" />
+                Picture:
                 <input type="file" name="image" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

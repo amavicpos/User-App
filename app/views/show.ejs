@@ -15,9 +15,9 @@
     <div>
         <div class="d-flex flex-row">
             <div>
-                <%= user.name %><br>
-                <%= user.email %><br>
-                <%= user.interests %><br>
+                Name: <%= user.name %><br>
+                Email: <%= user.email %><br>
+                Interests: <%= user.interests %><br>
                 <% if (user.picture) { %>
                     <img src=<%= user.picture.image.srcUrl %> alt="">
                 <% } %>
