@@ -5,23 +5,14 @@
         <div class="mb-3">
             <label class="form-label" for="name">Name</label>
             <input type="text" name="name" class="form-control" value="<%= user.name %>" required autofocus />
-            <div class="valid-feedback">
-                Looks good!
-            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="email">Email</label>
             <input type="text" name="email" class="form-control" value="<%= user.email %>" required />
-            <div class="valid-feedback">
-                Looks good!
-            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="interests">Interests</label>
             <input type="text" name="interests" class="form-control" value="<%= user.interests %>" required />
-            <div class="valid-feedback">
-                Looks good!
-            </div>
         </div>
         <% if (user.picture) { %>
             <p>Current picture: <%= user.picture.name %></p>
