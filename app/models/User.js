@@ -14,6 +14,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    biography: {
+        type: String
+    },
     picture: {
         type: Schema.Types.ObjectId,
         ref: 'images'

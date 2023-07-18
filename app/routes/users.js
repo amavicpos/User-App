@@ -49,18 +49,37 @@ router.post('/', upload.single('image'), (req, res) => {
         });
         newImage.save();
 
-        var newProfile = new User({
-            name: req.body.name,
-            email: req.body.email,
-            interests: req.body.interests,
-            picture: newImage._id
-        });
+        if (req.body.biography) {
+            var newProfile = new User({
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                biography: req.body.biography,
+                picture: newImage._id
+            });
+        } else {
+            var newProfile = new User({
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                picture: newImage._id
+            });
+        }
     } else {
-        var newProfile = new User({
-            name: req.body.name,
-            email: req.body.email,
-            interests: req.body.interests
-        });
+        if (req.body.biography) {
+            var newProfile = new User({
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                biography: req.body.biography
+            });
+        } else {
+            var newProfile = new User({
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests
+            });
+        }
     }
 
     newProfile.save()
@@ -107,33 +126,66 @@ router.post('/update/:id', upload.single('image'), (req, res) => {
         newImage.save();
 
         // Update the item in the database
-        User.findByIdAndUpdate(userId, {
-            name: req.body.name,
-            email: req.body.email,
-            interests: req.body.interests,
-            picture: newImage._id
-            })
-            .then(() => {
-                res.redirect('/');
-            })
-            .catch((error) => {
-                console.error('Error updating user:', error);
-                res.status(500).send('Internal Server Error');
-            });
+        if (req.body.biography) {
+            User.findByIdAndUpdate(userId, {
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                biography: req.body.biography,
+                picture: newImage._id
+                })
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch((error) => {
+                    console.error('Error updating user:', error);
+                    res.status(500).send('Internal Server Error');
+                });
+        } else {
+            User.findByIdAndUpdate(userId, {
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                picture: newImage._id
+                })
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch((error) => {
+                    console.error('Error updating user:', error);
+                    res.status(500).send('Internal Server Error');
+                });
+        }
     } else {
         // Update the item in the database
-        User.findByIdAndUpdate(userId, {
-            name: req.body.name,
-            email: req.body.email,
-            interests: req.body.interests
-            })
-            .then(() => {
-                res.redirect('/');
-            })
-            .catch((error) => {
-                console.error('Error updating user:', error);
-                res.status(500).send('Internal Server Error');
-            });
+        if (req.body.biography) {
+            User.findByIdAndUpdate(userId, {
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests,
+                biography: req.body.biography
+                })
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch((error) => {
+                    console.error('Error updating user:', error);
+                    res.status(500).send('Internal Server Error');
+                });
+        } else {
+            User.findByIdAndUpdate(userId, {
+                name: req.body.name,
+                email: req.body.email,
+                interests: req.body.interests
+                })
+                .then(() => {
+                    res.redirect('/');
+                })
+                .catch((error) => {
+                    console.error('Error updating user:', error);
+                    res.status(500).send('Internal Server Error');
+                });
+        }
     }
 });
 

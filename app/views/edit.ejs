@@ -21,6 +21,12 @@
                                 <label for="interests">Interests:</label>
                                 <input type="text" name="interests" class="form-control" value="<%= user.interests %>" required />
                             </div>
+                            <% if (user.biography) { %>
+                                <div class="row mb-2">
+                                    <label for="biography">Biography:</label>
+                                    <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
+                                </div>
+                            <% } %>
                             <div class="row">
                                 <% if (user.picture) { %>
                                     <p>Current picture: <%= user.picture.name %></p>
@@ -46,7 +52,7 @@
                 </form>
             </div>
         <% } else { %>
-            <div class="col-12">
+            <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
                 <form method="POST" action="/users/update/<%= user._id %>" autocomplete="off" class="validated-form" novalidate enctype="multipart/form-data">
                     <div class="form-group container">
                         <div class="column">
@@ -62,6 +68,12 @@
                                 <label for="interests">Interests:</label>
                                 <input type="text" name="interests" class="form-control" value="<%= user.interests %>" required />
                             </div>
+                            <% if (user.biography) { %>
+                                <div class="row mb-2">
+                                    <label for="biography">Biography:</label>
+                                    <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
+                                </div>
+                            <% } %>
                             <div class="row">
                                 <% if (user.picture) { %>
                                     <p>Current picture: <%= user.picture.name %></p>
