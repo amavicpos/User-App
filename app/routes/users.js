@@ -90,6 +90,32 @@ router.post('/', upload.single('image'), async (req, res) => {
     res.redirect('/');
 });
 
+router.post('/example', upload.single('image'), async (req, res) => {
+    const initialImage = new Image({
+        name: 'anna.jpg',
+        image: {
+            srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '..\\images\\anna.jpg')).toString('base64'))}`
+        }
+    });
+    await initialImage.save();
+    
+    const initialTeam = new Team({
+        name: 'Anna'
+    });
+    await initialTeam.save();
+    
+    const initialProfile = new User({
+        name: 'Anna Smith',
+        email: 'anna.smith@example.com',
+        interests: 'coding',
+        team: initialTeam._id,
+        picture: initialImage._id
+    });
+    await initialProfile.save();
+    initialTeam.users.push(initialProfile);
+    res.redirect('/');
+});
+
 // READ
 router.get('/show/:id', async (req, res) => {
     try {
@@ -222,7 +248,6 @@ router.post('/delete/:id', async (req, res) => {
     const previousTeam = currentUser.team;
     previousTeam.users.pop(currentUser);
     await User.findByIdAndDelete(id);
-    console.log(previousTeam.users.length == 0);
     if (previousTeam.users.length == 0) {
         await Team.findByIdAndDelete(previousTeam._id);
     }
@@ -230,4 +255,3 @@ router.post('/delete/:id', async (req, res) => {
 });
 
 module.exports = router;
-// TODO: Refactor conditionals with one liners or treat object as variable
