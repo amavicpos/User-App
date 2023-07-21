@@ -25,16 +25,12 @@
                                 <label for="team">Team:</label>
                                 <input type="text" name="team" class="form-control" value="<%= user.team.name %>" required />
                             </div>
-                            <% if (user.biography) { %>
-                                <div class="row mb-2">
-                                    <label for="biography">Biography:</label>
-                                    <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
-                                </div>
-                            <% } %>
+                            <div class="row mb-2">
+                                <label for="biography">Biography:</label>
+                                <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
+                            </div>
                             <div class="row">
-                                <% if (user.picture) { %>
-                                    <p>Current picture: <%= user.picture.name %></p>
-                                <% } %>
+                                <p>Current picture: <%= user.picture.name %></p>
                             </div>
                             <div class="row">
                                 <label for="image">New picture:</label>
@@ -76,16 +72,9 @@
                                 <label for="team">Team:</label>
                                 <input type="text" name="team" class="form-control" value="<%= user.team.name %>" required />
                             </div>
-                            <% if (user.biography) { %>
-                                <div class="row mb-2">
-                                    <label for="biography">Biography:</label>
-                                    <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
-                                </div>
-                            <% } %>
-                            <div class="row">
-                                <% if (user.picture) { %>
-                                    <p>Current picture: <%= user.picture.name %></p>
-                                <% } %>
+                            <div class="row mb-2">
+                                <label for="biography">Biography:</label>
+                                <input type="text" name="biography" class="form-control" value="<%= user.biography %>" />
                             </div>
                             <div class="row">
                                 <label for="image">New picture:</label>
@@ -109,4 +98,3 @@
         <% } %>
     </div>
 </div>
-// TODO: Change layout (even if no bio, option of adding)
