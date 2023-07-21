@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// TODO: Edit user model to add team
+
 const UserSchema = new Schema({
     name: {
         type: String,
@@ -12,6 +12,11 @@ const UserSchema = new Schema({
     },
     interests: {
         type: String,
+        required: true
+    },
+    team: {
+        type: Schema.Types.ObjectId,
+        ref: 'teams',
         required: true
     },
     biography: {

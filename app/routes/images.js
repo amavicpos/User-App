@@ -6,7 +6,7 @@ const path = require('path');
 const Image = require('../models/Image');
 
 const router = express.Router();
-
+// TODO: Add option see all pictures
 // Currently not in use
 
 // STORAGE
@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/upload', upload.single('image'), (req, res) => {
+router.post('/upload', upload.single('image'), async (req, res) => {
     if (!req.file) {
       return res.status(400).send('No file was uploaded.');
     }
@@ -40,7 +40,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
             srcUrl: fileSource
         }
     });
-    newImage.save();
+    await newImage.save();
     res.redirect('/');
 });
 

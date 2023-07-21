@@ -15,6 +15,9 @@
                 <div class="row">
                     Interests: <%= user.interests %>
                 </div>
+                <div class="row">
+                    Team: <%= user.team.name %>
+                </div>
                 <% if (user.biography) { %>
                     <div class="row">
                         Biography: <%= user.biography %>
@@ -35,6 +38,9 @@
                 <div class="row">
                     Interests: <%= user.interests %>
                 </div>
+                <div class="row">
+                    Team: <%= user.team.name %>
+                </div>
                 <% if (user.biography) { %>
                     <div class="row">
                         Biography: <%= user.biography %>
@@ -47,4 +53,3 @@
         <% } %>
     </div>
 </div>
-// TODO: Edit show and edit views to add team

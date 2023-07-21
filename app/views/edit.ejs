@@ -21,6 +21,10 @@
                                 <label for="interests">Interests:</label>
                                 <input type="text" name="interests" class="form-control" value="<%= user.interests %>" required />
                             </div>
+                            <div class="row mb-2">
+                                <label for="team">Team:</label>
+                                <input type="text" name="team" class="form-control" value="<%= user.team.name %>" required />
+                            </div>
                             <% if (user.biography) { %>
                                 <div class="row mb-2">
                                     <label for="biography">Biography:</label>
@@ -68,6 +72,10 @@
                                 <label for="interests">Interests:</label>
                                 <input type="text" name="interests" class="form-control" value="<%= user.interests %>" required />
                             </div>
+                            <div class="row mb-2">
+                                <label for="team">Team:</label>
+                                <input type="text" name="team" class="form-control" value="<%= user.team.name %>" required />
+                            </div>
                             <% if (user.biography) { %>
                                 <div class="row mb-2">
                                     <label for="biography">Biography:</label>
@@ -101,4 +109,3 @@
         <% } %>
     </div>
 </div>
-// TODO: Edit show and edit views to add team
