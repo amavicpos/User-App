@@ -41,7 +41,7 @@ const initialProfile1 = new User({
 initialProfile1.save();
 User.collection.drop();
 Image.collection.drop();
-
+// TODO: Edit initial user
 const initialImage = new Image({
     name: 'anna.jpg',
     image: {

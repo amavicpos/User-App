@@ -7,7 +7,7 @@ const Image = require('../models/Image');
 const User = require('../models/User');
 
 const router = express.Router();
-
+// TODO: Add user team route
 // STORAGE
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
