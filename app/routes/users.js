@@ -144,6 +144,12 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.post('/search', async (req, res) => {
+    const users = await User.find({name: req.body.name});
+    console.log(req.body.name);
+    res.send(users);
+});
+
 // UPDATE
 router.get('/update/:id', async (req, res) => {
 

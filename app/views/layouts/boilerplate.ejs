@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/878fdb28e8.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -32,17 +32,17 @@
               </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search">
-          </form>
+          <form class="form-inline my-2 my-md-0" method="POST" action="users/search" autocomplete="off">
+            <input class="form-control" type="text" placeholder="Search" name="name">
+            <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass" style="color: white;"></i></button>
+        </form>
         </div>
     </nav>
       
     <%- body %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-// TODO: Add search box
+// TODO: Make search box functional
