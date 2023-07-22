@@ -126,7 +126,8 @@ router.post('/example', upload.single('image'), async (req, res) => {
 router.get('/show/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id).populate('picture').populate('team');
-        res.render("show", { user });
+        const teams = await Team.find();
+        res.render("show", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
     } catch (error) {
         console.error('Error rendering view:', error);
         res.status(500).send('Error rendering view');
@@ -136,8 +137,10 @@ router.get('/show/:id', async (req, res) => {
 router.get('/', async (req, res) => {
 
     const users = await User.find();
+    const teams = await Team.find();
     res.render("index", {
-        profiles: (Object.keys(users).length > 0 ? users : {})
+        profiles: (Object.keys(users).length > 0 ? users : {}),
+        teams: (Object.keys(teams).length > 0 ? teams : {})
     });
 });
 
@@ -145,7 +148,8 @@ router.get('/', async (req, res) => {
 router.get('/update/:id', async (req, res) => {
 
     const user = await User.findById(req.params.id).populate('picture').populate('team');
-    res.render("edit", { user });
+    const teams = await Team.find();
+    res.render("edit", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
 });
 
 router.post('/update/:id', upload.single('image'), async (req, res) => {
