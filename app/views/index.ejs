@@ -54,24 +54,28 @@
                                     <% if (user.picture) { %>
                                         <img class="card-img-top" src=<%= user.picture.image.srcUrl %> style="max-width: 100%" alt=<%= user.name %>>
                                     <% } %>
-                                    <div class="card-body text-center">
+                                    <div class="card-body">
                                         <h5 class="card-title"><%= user.name %></h5>
-                                        <div class="card-text">
-                                            <a style="color: goldenrod;" href="/users/update/<%= user._id %>">Update
-                                                profile</a>
-                                        </div>
-                                        <div class="card-text">
-                                            <a style="color: goldenrod;" href="/users/show/<%= user._id %>">Read
-                                                profile</a>
-                                        </div>
-                                        <div class="card-text">
-                                            <a style="color: goldenrod;" href="javascript:;" onclick="this.children[0].submit()"
-                                            class="text-danger">
-                                                <form method="POST" action="/users/delete/<%= user._id %>">
-                                                    <input type="hidden" name="_key" value="<%= user._id %>" />
-                                                </form>
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
+                                        <div class="row">
+                                            <div class="card-text mx-auto">
+                                                <a style="color: green;" href="/users/update/<%= user._id %>">
+                                                    <i class="fa-solid fa-pen-nib"></i>
+                                                </a>
+                                            </div>
+                                            <div class="card-text mx-auto">
+                                                <a style="color: blue;" href="/users/show/<%= user._id %>">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </div>
+                                            <div class="card-text mx-auto">
+                                                <a href="javascript:;" onclick="this.children[0].submit()"
+                                                class="text-danger">
+                                                    <form method="POST" action="/users/delete/<%= user._id %>">
+                                                        <input type="hidden" name="_key" value="<%= user._id %>" />
+                                                    </form>
+                                                    <i class="fa fa-trash-o"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
