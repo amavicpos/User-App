@@ -26,11 +26,11 @@ const upload = multer({ storage: storage });
 // CREATE
 router.post('/', upload.single('image'), async (req, res) => {
     var currentTeam = await Team.where({name: req.body.team}).findOne();
-        if (!currentTeam) {
-            currentTeam = new Team({
-                name: req.body.team
-            });
-            await currentTeam.save();
+    if (!currentTeam) {
+        currentTeam = new Team({
+            name: req.body.team
+        });
+        await currentTeam.save();
     }
     if (req.file) {
         const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
@@ -86,7 +86,12 @@ router.post('/', upload.single('image'), async (req, res) => {
     }
 
     await newProfile.save();
-    currentTeam.users.push(newProfile)
+    if (!currentTeam.users) {
+        currentTeam.users = [newProfile];
+    } else {
+        currentTeam.users.push(newProfile);
+    }
+    await currentTeam.save();
     res.redirect('/');
 });
 
@@ -112,7 +117,8 @@ router.post('/example', upload.single('image'), async (req, res) => {
         picture: initialImage._id
     });
     await initialProfile.save();
-    initialTeam.users.push(initialProfile);
+    initialTeam.users = [initialProfile];
+    await initialTeam.save();
     res.redirect('/');
 });
 
@@ -147,9 +153,8 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
     const currentUser = await User.findById(userId).populate('team');
     const previousTeam = currentUser.team;
     var currentTeam;
-    if (await Team.where({name: req.body.team}).findOne()) {
-        currentTeam = await Team.where({name: req.body.team}).findOne();
-    } else {
+    currentTeam = await Team.where({name: req.body.team}).findOne();
+    if (!currentTeam) {
         currentTeam = new Team({
             name: req.body.team
         });
@@ -231,9 +236,11 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
                 });
         }
     }
-    if (currentTeam != previousTeam) {
+    if (currentTeam.name != previousTeam.name) {
         previousTeam.users.pop(await User.findById(userId));
         currentTeam.users.push(await User.findById(userId));
+        await previousTeam.save();
+        await currentTeam.save();
         if (previousTeam.users.length == 0) {
             await Team.findByIdAndDelete(previousTeam._id);
         }
