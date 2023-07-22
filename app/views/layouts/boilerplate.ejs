@@ -24,7 +24,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teams</a>
               <div class="dropdown-menu" aria-labelledby="dropdown">
-                <% if(Object.keys(profiles).length> 0) { %>
+                <% if(Object.keys(teams).length> 0) { %>
                     <% teams.forEach(team => { %>
                         <a class="dropdown-item" href="/teams/show/<%= team._id %>"><%= team.name %></a>
                     <% }) %>
