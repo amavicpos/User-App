@@ -146,10 +146,12 @@ router.get('/', async (req, res) => {
 
 router.post('/search', async (req, res) => {
     const users = await User.find();
+    const teams = await Team.find();
     usersMatch = users.filter(user => user.name.search('/'+req.body.name+'/i'));
-    console.log(req.body.name);
-    console.log(usersMatch);
-    res.send(usersMatch);
+    res.render('indexSearch', {
+        users: (Object.keys(users).length > 0 ? users : {}),
+        teams: (Object.keys(teams).length > 0 ? teams : {})
+    });
 });
 
 // UPDATE
