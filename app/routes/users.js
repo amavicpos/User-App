@@ -145,9 +145,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/search', async (req, res) => {
-    const users = await User.find({name: req.body.name});
+    const users = await User.find();
+    usersMatch = users.filter(user => user.name.search('/'+req.body.name+'/i'));
     console.log(req.body.name);
-    res.send(users);
+    console.log(usersMatch);
+    res.send(usersMatch);
 });
 
 // UPDATE
