@@ -7,7 +7,6 @@ const app = express();
 
 // ROUTE
 const UsersRouter = require('./routes/users');
-const ImagesRouter = require('./routes/images');
 const TeamsRouter = require('./routes/teams');
 
 // EJS ENGINE
@@ -26,7 +25,6 @@ mongoose
 
 app.use('/users', UsersRouter);
 app.use('/teams', TeamsRouter);
-app.use('/images', ImagesRouter);
 app.get('/', (req, res) => {
     res.redirect('/users')
 });
