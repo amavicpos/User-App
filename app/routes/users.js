@@ -136,7 +136,7 @@ router.get('/show/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
 
-    const users = await User.find();
+    const users = await User.find().populate('picture');
     const teams = await Team.find();
     res.render("index", {
         profiles: (Object.keys(users).length > 0 ? users : {}),

@@ -47,44 +47,45 @@
             <br>
             <div class="row">
                 <div class="col-12">
-                    <% if(Object.keys(profiles).length> 0) { %>
-                        <ul class="nav flex-column">
-                            <% profiles.forEach(user=> { %>
-                                <li class="nav-item">
-                                    <div class="d-flex justify-content-between align-items-center py-1">
-                                        <div class="col-5">
-                                            <%= user.name %>
-                                        </div>
-                                        <div class="col-3">
-                                            <a class="btn" style="background-color: goldenrod; color: white" href="/users/update/<%= user._id %>">Update
+                    <% if(Object.keys(profiles).length > 0) { %>
+                        <div class="card-columns">
+                            <% profiles.forEach(user => { %>
+                                <div class="card text-center">
+                                    <% if (user.picture) { %>
+                                        <img class="card-img-top" src=<%= user.picture.image.srcUrl %> style="max-width: 100%" alt=<%= user.name %>>
+                                    <% } %>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><%= user.name %></h5>
+                                        <div class="card-text">
+                                            <a style="color: goldenrod;" href="/users/update/<%= user._id %>">Update
                                                 profile</a>
                                         </div>
-                                        <div class="col-3">
-                                            <a class="btn" style="background-color: goldenrod; color: white" href="/users/show/<%= user._id %>">Read
+                                        <div class="card-text">
+                                            <a style="color: goldenrod;" href="/users/show/<%= user._id %>">Read
                                                 profile</a>
                                         </div>
-                                        <div class="col-1">
-                                            <a href="javascript:;" onclick="this.children[0].submit()"
+                                        <div class="card-text">
+                                            <a style="color: goldenrod;" href="javascript:;" onclick="this.children[0].submit()"
                                             class="text-danger">
-                                            <form method="POST" action="/users/delete/<%= user._id %>">
-                                                <input type="hidden" name="_key" value="<%= user._id %>" />
-                                            </form>
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                                <form method="POST" action="/users/delete/<%= user._id %>">
+                                                    <input type="hidden" name="_key" value="<%= user._id %>" />
+                                                </form>
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                </li>
-                                <% }) %>
-                        </ul>
-                        <% } else { %>
-                            <div class="text-center"><strong>No users.</strong></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <form action="/users/example" method="POST">
-                                    <button type="submit" class="btn" style="background-color: goldenrod; color: white">Create example user</button>
-                                </form>
-                            </div>
-                            <% } %>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="text-center"><strong>No users.</strong></div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <form action="/users/example" method="POST">
+                                <button type="submit" class="btn" style="background-color: goldenrod; color: white">Create example user</button>
+                            </form>
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>
