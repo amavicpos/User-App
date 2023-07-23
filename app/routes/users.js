@@ -150,7 +150,8 @@ router.post('/search', async (req, res) => {
     usersMatch = users.filter(user => user.name.toLowerCase().includes(req.body.name.toLowerCase()));
     res.render('indexSearch', {
         profiles: (Object.keys(usersMatch).length > 0 ? users : {}),
-        teams: (Object.keys(teams).length > 0 ? teams : {})
+        teams: (Object.keys(teams).length > 0 ? teams : {}),
+        query: req.body.name
     });
 });
 
