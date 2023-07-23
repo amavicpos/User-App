@@ -43,6 +43,9 @@
                                 <div class="column">
                                     <button type="submit" class="btn" style="background-color: goldenrod; color: white">Submit</button>
                                 </div>
+                                <div class="column">
+                                    <button class="btn" id="back" style="background-color: goldenrod; color: white">Back</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,6 +87,9 @@
                                 <div class="column">
                                     <button type="submit" class="btn" style="background-color: goldenrod; color: white">Submit</button>
                                 </div>
+                                <div class="column">
+                                    <button class="btn" id="back" style="background-color: goldenrod; color: white">Back</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,4 +98,12 @@
         <% } %>
     </div>
 </div>
-// TODO: Submit redirect to previous page not always index
+
+<script>
+    let btnBack = document.querySelector('#back');
+
+    btnBack.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.history.back();
+    });
+</script>
