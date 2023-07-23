@@ -147,24 +147,12 @@ router.get('/', async (req, res) => {
 router.post('/search', async (req, res) => {
     const users = await User.find();
     const teams = await Team.find();
-    users.forEach(user => user.name.search('/'+req.body.name+'/i'));
-    usersMatch = users.filter(user => user.name.search('/'+req.body.name+'/i'));
+    usersMatch = users.filter(user => user.name.toLowerCase().includes(req.body.name.toLowerCase()));
     res.render('indexSearch', {
-        users: (Object.keys(users).length > 0 ? users : {}),
+        profiles: (Object.keys(usersMatch).length > 0 ? users : {}),
         teams: (Object.keys(teams).length > 0 ? teams : {})
     });
 });
-// TODO: Fix search
-// router.post('/search', async (req, res) => {
-//     const users = await User.find();
-//     const teams = await Team.find();
-//     users.forEach(user => console.log(user.name.toLowerCase().includes(req.body.name.toLowerCase())));
-//     usersMatch = users.filter(user => user.name.toLowerCase().includes(req.body.name.toLowerCase()));
-//     res.render('indexSearch', {
-//         users: (Object.keys(usersMatch).length > 0 ? users : {}),
-//         teams: (Object.keys(teams).length > 0 ? teams : {})
-//     });
-// });
 
 // UPDATE
 router.get('/update/:id', async (req, res) => {
