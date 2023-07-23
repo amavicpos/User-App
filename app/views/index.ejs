@@ -7,35 +7,34 @@
             </div>
             <br>
             <div class="row">
-                // TODO: Responsive desing in new form and existing users
                 <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
                     <div class="d-flex justify-content-around">
-                        <div class="col-10">
+                        <div class="col-md-10">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <input type="text" name="name" class="form-control" placeholder="Name" required autofocus />
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <input type="text" name="email" class="form-control" placeholder="Email" required />
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <input type="text" name="interests" class="form-control" placeholder="Interests" required />
                                 </div>
-                                <div class="col-3">
+                                <div class="col-md-3">
                                     <input type="text" name="team" class="form-control" placeholder="Team" required />
                                 </div>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input type="text" name="biography" class="form-control" placeholder="Biography" />
                                 </div>
-                                <div class="col-2">
+                                <div class="col-md-2">
                                     <input type="file" name="image" accept="image/*">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2 justify-content-center">
+                        <div class="col-md-2 justify-content-center">
                             <button type="submit" class="btn" style="background-color: goldenrod; color: white">Submit</button>
                         </div>
                     </div>
