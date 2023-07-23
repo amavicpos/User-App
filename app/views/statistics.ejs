@@ -8,7 +8,11 @@
                 <p>Number of users in each team:</p>
                 <ul>
                     <% teams.forEach(team => { %>
-                        <li><%= team.name %>: <%= team.users.length %> users</li>
+                        <% if (team.users.length==1) { %>
+                            <li><%= team.name %>: <%= team.users.length %> user</li>
+                        <% } else { %>
+                            <li><%= team.name %>: <%= team.users.length %> users</li>
+                        <% } %>
                     <% }) %>
                 </ul>
             <% } %>
