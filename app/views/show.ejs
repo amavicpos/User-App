@@ -23,6 +23,9 @@
                         Biography: <%= user.biography %>
                     </div>
                 <% } %>
+                <div class="mt-3 row">
+                    <button class="btn" id="back" style="background-color: goldenrod; color: white">Back</button>
+                </div>
             </div>
         <% } else { %>
             <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
@@ -43,8 +46,19 @@
                         Biography: <%= user.biography %>
                     </div>
                 <% } %>
+                <div class="mt-3 row">
+                    <button class="btn" id="back" style="background-color: goldenrod; color: white">Back</button>
+                </div>
             </div>
         <% } %>
     </div>
 </div>
-// TODO: Submit redirect to previous page not always index
+
+<script>
+    let btnBack = document.querySelector('#back');
+
+    btnBack.addEventListener('click', () => {
+        window.history.back()
+    });
+</script>
+// TODO: Back button and submit redirect to previous page not always index
