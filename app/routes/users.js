@@ -271,6 +271,9 @@ router.post('/delete/:id', async (req, res) => {
     await Team.findByIdAndUpdate(previousTeam._id, {
         users: previousTeam.users.pop(currentUser)
     });
+    if (currentUser.picture) {
+        await Image.findByIdAndDelete(currentUser.picture._id);
+    }
     await User.findByIdAndDelete(id);
     if (previousTeam.users.length == 0) {
         await Team.findByIdAndDelete(previousTeam._id);
