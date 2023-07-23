@@ -9,29 +9,30 @@
             <div class="row">
                 <div class="col-12">
                     <% if(Object.keys(profiles).length> 0) { %>
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column" style="width: 80%;">
                             <% profiles.forEach(user=> { %>
                                 <li class="nav-item">
                                     <div class="d-flex justify-content-between align-items-center py-1">
-                                        <div class="col-5">
+                                        <div class="col-8">
                                             <%= user.name %>
                                         </div>
-                                        <div class="col-3">
-                                            <a class="btn" style="background-color: goldenrod; color: white" href="/users/update/<%= user._id %>">Update
-                                                profile</a>
+                                        <div class="col-1 mx-auto">
+                                            <a style="color: green;" href="/users/update/<%= user._id %>">
+                                                <i class="fa-solid fa-pen-nib"></i>
+                                            </a>
                                         </div>
-                                        <div class="col-3">
-                                            <a class="btn" style="background-color: goldenrod; color: white" href="/users/show/<%= user._id %>">Read
-                                                profile</a>
+                                        <div class="col-1 mx-auto">
+                                            <a style="color: blue;" href="/users/show/<%= user._id %>">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
                                         </div>
-                                        <div class="col-1">
-                                            <a href="javascript:;" onclick="this.children[0].submit()"
-                                            class="text-danger">
-                                            <form method="POST" action="/users/delete/<%= user._id %>">
-                                                <input type="hidden" name="_key" value="<%= user._id %>" />
-                                            </form>
-                                            <i class="fa fa-trash-o"></i>
-                                        </a>
+                                        <div class="col-1 mx-auto">
+                                            <a style="color: red;" href="javascript:;" onclick="this.children[0].submit()">
+                                                <form method="POST" action="/users/delete/<%= user._id %>">
+                                                    <input type="hidden" name="_key" value="<%= user._id %>" />
+                                                </form>
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </li>
@@ -56,4 +57,3 @@
         window.history.back()
     });
 </script>
-// TODO: Icons
