@@ -252,7 +252,7 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
         }
     }
     if (currentTeam.name != previousTeam.name) {
-        previousTeam.users.pop(await User.findById(userId));
+        await previousTeam.users.pop(await User.findById(userId));
         currentTeam.users.push(await User.findById(userId));
         await previousTeam.save();
         await currentTeam.save();
@@ -268,7 +268,9 @@ router.post('/delete/:id', async (req, res) => {
     const id = req.params.id;
     const currentUser = await User.findById(id).populate('team');
     const previousTeam = currentUser.team;
-    previousTeam.users.pop(currentUser);
+    await Team.findByIdAndUpdate(previousTeam._id, {
+        users: previousTeam.users.pop(currentUser)
+    });
     await User.findByIdAndDelete(id);
     if (previousTeam.users.length == 0) {
         await Team.findByIdAndDelete(previousTeam._id);
