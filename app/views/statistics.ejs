@@ -2,14 +2,16 @@
 <div class="col-md-8 m-auto pt-4">
     <div class="row">
         <div class="col-md-8 m-auto pt-4">
-            <p>Number of teams: <%= teams.length %></p>
-            <p>Number of users: <%= users.length %></p>
-            <p>Number of users in each team:</p>
-            <ul>
-                <% teams.forEach(team => { %>
-                    <li><%= team.name %>: <%= team.users.length %> users</li>
-                <% }) %>
-            </ul>
+            <p>Number of teams: <%= teams.length ? teams.length : 0 %></p>
+            <p>Number of users: <%= users.length ? users.length : 0 %></p>
+            <% if (teams.length) { %>
+                <p>Number of users in each team:</p>
+                <ul>
+                    <% teams.forEach(team => { %>
+                        <li><%= team.name %>: <%= team.users.length %> users</li>
+                    <% }) %>
+                </ul>
+            <% } %>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
