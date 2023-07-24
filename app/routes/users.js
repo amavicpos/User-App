@@ -99,7 +99,7 @@ router.post('/example', upload.single('image'), async (req, res) => {
     const initialImage = new Image({
         name: 'anna.jpg',
         image: {
-            srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '..\\images\\anna.jpg')).toString('base64'))}`
+            srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '..\\public\\images\\anna.jpg')).toString('base64'))}`
         }
     });
     await initialImage.save();

@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
 const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
 const ejsMate = require('ejs-mate');
 const app = express();
-// npm install mongoose body-parser express ejs fs multer path ejs-mate
+// npm install mongoose body-parser express ejs fs multer path ejs-mate serve-favicon
 
 // ROUTE
 const UsersRouter = require('./routes/users');
@@ -14,6 +16,8 @@ const StatsRouter = require('./routes/statistics');
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')));
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
