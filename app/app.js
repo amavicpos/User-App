@@ -23,7 +23,7 @@ app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
 // DATABASE
-const db = process.env.MONGO_URI;
+const db = process.env.MONGO_URI || 'mongodb://localhost:27017/userapp';
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log(`Mongodb Connected`))
