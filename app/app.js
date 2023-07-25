@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
 const express = require('express');
@@ -5,7 +6,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const ejsMate = require('ejs-mate');
 const app = express();
-// npm install mongoose body-parser express ejs fs multer path ejs-mate serve-favicon
+// npm install mongoose body-parser express ejs fs multer path ejs-mate serve-favicon dotenv
 
 // ROUTE
 const UsersRouter = require('./routes/users');
@@ -22,7 +23,7 @@ app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
 // DATABASE
-const db = require('./config/keys').mongoProdURI;
+const db = process.env.MONGO_URI;
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log(`Mongodb Connected`))

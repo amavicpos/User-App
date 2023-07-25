@@ -12,7 +12,7 @@ const router = express.Router();
 // STORAGE
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './images'); // Specify the destination folder
+      cb(null, './public/images'); // Specify the destination folder
     },
     filename: function (req, file, cb) {
       // Generate a unique filename by appending the current timestamp
@@ -33,7 +33,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         await currentTeam.save();
     }
     if (req.file) {
-        const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
+        const fileData = fs.readFileSync(path.join(__dirname, '..', req.file.path));
         const base64String = Buffer.from(fileData).toString('base64');
         const mimeType = req.file.mimetype; // Replace with the appropriate MIME type for your file
         const fileSource = `data:${mimeType};base64,${base64String}`;
@@ -99,7 +99,7 @@ router.post('/example', upload.single('image'), async (req, res) => {
     const initialImage = new Image({
         name: 'anna.jpg',
         image: {
-            srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '..\\public\\images\\anna.jpg')).toString('base64'))}`
+            srcUrl: `data:image/jpeg;base64,${Buffer.from(fs.readFileSync(path.join(__dirname, '..', 'public', 'images', 'anna.jpg')).toString('base64'))}`
         }
     });
     await initialImage.save();
@@ -178,7 +178,7 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
 
     if (req.file) {
         // Save input image as new database data
-        const fileData = fs.readFileSync(path.join(__dirname, '..\\', req.file.path));
+        const fileData = fs.readFileSync(path.join(__dirname, '..', req.file.path));
         const base64String = Buffer.from(fileData).toString('base64');
         const mimeType = req.file.mimetype; // Replace with the appropriate MIME type for your file
         const fileSource = `data:${mimeType};base64,${base64String}`;
