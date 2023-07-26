@@ -4,18 +4,6 @@
         <div class="col-md-8 m-auto pt-4">
             <p>Number of teams: <%= teams.length ? teams.length : 0 %></p>
             <p>Number of users: <%= users.length ? users.length : 0 %></p>
-            <% if (teams.length) { %>
-                <p>Number of users in each team:</p>
-                <ul>
-                    <% teams.forEach(team => { %>
-                        <% if (team.users.length==1) { %>
-                            <li><%= team.name %>: <%= team.users.length %> user</li>
-                        <% } else { %>
-                            <li><%= team.name %>: <%= team.users.length %> users</li>
-                        <% } %>
-                    <% }) %>
-                </ul>
-            <% } %>
             <% if (Object.keys(teams).length > 0) { %>
                 <div class="container">
                     <canvas id="barChart"></canvas>
