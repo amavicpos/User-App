@@ -16,6 +16,11 @@
                     <% }) %>
                 </ul>
             <% } %>
+            <% if (Object.keys(teams).length > 0) { %>
+                <div class="container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            <% } %>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -29,4 +34,45 @@
     btnBack.addEventListener('click', () => {
         window.history.back()
     });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var data = {
+        labels: <%- JSON.stringify(labelsChart); %>,
+        datasets: [{
+            label: "Users",
+            data: <%- JSON.stringify(dataChart); %>,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    };
+
+var options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    },
+    plugins: {
+        title: {
+            display: true,
+            text: 'Number of users by team'
+        }
+    }
+};
+
+var ctx = document.getElementById("barChart").getContext('2d');
+
+var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: options
+});
 </script>
