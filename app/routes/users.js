@@ -25,10 +25,11 @@ const upload = multer({ storage: storage });
 
 // CREATE
 router.post('/', upload.single('image'), async (req, res) => {
-    var currentTeam = await Team.where({name: req.body.team}).findOne();
+    var teamName = req.body.team.charAt(0).toUpperCase() + req.body.team.slice(1);
+    var currentTeam = await Team.where({name: teamName}).findOne();
     if (!currentTeam) {
         currentTeam = new Team({
-            name: req.body.team
+            name: teamName
         });
         await currentTeam.save();
     }
