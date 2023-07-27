@@ -18,7 +18,7 @@
                                     <input type="text" name="email" class="form-control" placeholder="Email" required />
                                 </div>
                                 <div class="col-md-3" style="align-items: center; display: flex; flex-direction: column;">
-                                    <input type="text" name="interests" id="interests" class="form-control" placeholder="Interests" required pattern="[^,\s]+(?:,\s*[^,]+)*$" />
+                                    <input type="text" name="interests" id="interests" class="form-control" placeholder="Interests" required pattern=".+(?:,\s*[^,]+)*$" />
                                     <label for="interests" style="color: grey; font-size: 14px;"></label>
                                 </div>
                                 <div class="col-md-3">
@@ -101,7 +101,7 @@
     x.addEventListener("blur", myBlurFunction, true);
 
     function myFocusFunction() {
-        document.getElementById("interests").labels[0].textContent = '- Comma-separated\n- No comma/space at the start and end';
+        document.getElementById("interests").labels[0].textContent = 'Comma-separated';
     }
 
     function myBlurFunction() {
