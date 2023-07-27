@@ -32,8 +32,8 @@
         datasets: [{
             label: "Users",
             data: <%- JSON.stringify(dataChart); %>,
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(37,90,223, 0.6)',
+            borderColor: 'rgba(37,90,223, 1)',
             borderWidth: 1
         }]
     };
@@ -51,7 +51,13 @@ var options = {
     plugins: {
         title: {
             display: true,
-            text: 'Number of users by team'
+            text: 'Number of users by team:',
+            font: {
+                size: 15,
+                weight: 'normal',
+                family: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                color: 'black'
+            }
         }
     }
 };
