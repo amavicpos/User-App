@@ -169,10 +169,11 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
     const currentUser = await User.findById(userId).populate('team');
     const previousTeam = currentUser.team;
     var currentTeam;
-    currentTeam = await Team.where({name: req.body.team}).findOne();
+    var teamName = req.body.team.charAt(0).toUpperCase() + req.body.team.slice(1);
+    currentTeam = await Team.where({name: teamName}).findOne();
     if (!currentTeam) {
         currentTeam = new Team({
-            name: req.body.team
+            name: teamName
         });
         await currentTeam.save();
     }
