@@ -18,8 +18,8 @@
                                     <input type="text" name="email" class="form-control" placeholder="Email" required />
                                 </div>
                                 <div class="col-md-3" style="align-items: center; display: flex; flex-direction: column;">
-                                    <input type="text" name="interests" class="form-control" placeholder="Interests" required pattern="[^,\s]+(?:,\s*[^,]+)*$" />
-                                    <label for="interests" style="color: grey; font-size: 14px;">Comma-separated</label>
+                                    <input type="text" name="interests" id="interests" class="form-control" placeholder="Interests" required pattern="[^,\s]+(?:,\s*[^,]+)*$" />
+                                    <label for="interests" style="color: grey; font-size: 14px;"></label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" name="team" class="form-control" placeholder="Team" required />
@@ -94,3 +94,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    let x = document.getElementById("interests");
+    x.addEventListener("focus", myFocusFunction, true);
+    x.addEventListener("blur", myBlurFunction, true);
+
+    function myFocusFunction() {
+        document.getElementById("interests").labels[0].textContent = 'Comma-separated';
+    }
+
+    function myBlurFunction() {
+    document.getElementById("interests").labels[0].textContent = '';
+    }
+</script>
