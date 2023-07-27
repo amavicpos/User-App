@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
         var interestsArray;
         var interestsArrayUnique;
         users.forEach(user => {
-            interestsArray = user.interests.split(', ').map(interest => interest.toLowerCase());
+            interestsArray = user.interests.split(/,\s*/).map(interest => interest.toLowerCase());
             interestsArrayUnique = [...new Set(interestsArray)];
             interestsArrayUnique.forEach(interest => {
                 if (interestsChart[interest]) {

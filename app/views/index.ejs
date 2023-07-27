@@ -17,14 +17,14 @@
                                 <div class="col-md-3">
                                     <input type="text" name="email" class="form-control" placeholder="Email" required />
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="text" name="interests" class="form-control" placeholder="Interests" required />
+                                <div class="col-md-3" style="align-items: center; display: flex; flex-direction: column;">
+                                    <input type="text" name="interests" class="form-control" placeholder="Interests" required pattern="[^,\s]+(?:,\s*[^,]+)*$" />
+                                    <label for="interests" style="color: grey; font-size: 14px;">Comma-separated</label>
                                 </div>
                                 <div class="col-md-3">
                                     <input type="text" name="team" class="form-control" placeholder="Team" required />
                                 </div>
                             </div>
-                            <br>
                             <div class="row">
                                 <div class="col-md-9">
                                     <input type="text" name="biography" class="form-control" placeholder="Biography" />
