@@ -9,6 +9,11 @@
                     <canvas id="barChart"></canvas>
                 </div>
             <% } %>
+            <% if (Object.keys(users).length > 0) { %>
+                <div class="container">
+                    <canvas id="barChartInterests"></canvas>
+                </div>
+            <% } %>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -32,6 +37,17 @@
         datasets: [{
             label: "Users",
             data: <%- JSON.stringify(dataChart); %>,
+            backgroundColor: 'rgba(37,90,223, 0.6)',
+            borderColor: 'rgba(37,90,223, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    var dataInterests = {
+        labels: <%- JSON.stringify(Object.keys(interestsChart)); %>,
+        datasets: [{
+            label: "Users",
+            data: <%- JSON.stringify(Object.values(interestsChart)); %>,
             backgroundColor: 'rgba(37,90,223, 0.6)',
             borderColor: 'rgba(37,90,223, 1)',
             borderWidth: 1
@@ -62,11 +78,41 @@ var options = {
     }
 };
 
+var optionsInterests = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    },
+    plugins: {
+        title: {
+            display: true,
+            text: 'Number of users by interest:',
+            font: {
+                size: 15,
+                weight: 'normal',
+                family: "Helvetica Neue, Helvetica, Arial, sans-serif",
+                color: 'black'
+            }
+        }
+    }
+};
+
 var ctx = document.getElementById("barChart").getContext('2d');
+var ctx2 = document.getElementById("barChartInterests").getContext('2d');
 
 var barChart = new Chart(ctx, {
     type: 'bar',
     data: data,
     options: options
+});
+var barChartInterests = new Chart(ctx2, {
+    type: 'bar',
+    data: dataInterests,
+    options: optionsInterests
 });
 </script>

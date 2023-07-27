@@ -21,11 +21,26 @@ router.get('/', async (req, res) => {
                 dataChart.push(team.users.length);
             });
         }
+        interestsChart = {};
+        var interestsArray;
+        var interestsArrayUnique;
+        users.forEach(user => {
+            interestsArray = user.interests.split(', ').map(interest => interest.toLowerCase());
+            interestsArrayUnique = [...new Set(interestsArray)];
+            interestsArrayUnique.forEach(interest => {
+                if (interestsChart[interest]) {
+                    interestsChart[interest] += 1;
+                } else {
+                    interestsChart[interest] = 1;
+                }
+            });
+        });
         res.render("statistics", {
             teams: (Object.keys(teams).length > 0 ? teams : {}),
             users: (Object.keys(users).length > 0 ? users : {}),
             labelsChart: labelsChart,
-            dataChart: dataChart
+            dataChart: dataChart,
+            interestsChart: interestsChart
         });
     } catch (error) {
         console.error('Error rendering view:', error);
