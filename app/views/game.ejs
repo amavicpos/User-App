@@ -2,7 +2,11 @@
 <h1>Guess Game</h1>
 <p>Guess <%= user.name %>'s <%= question %>:</p>
 <input type="text" id="guess" />
-<button onclick="checkGuess('<%= user[question] %>')">Submit Guess</button>
+<% if (question == 'team') { %>
+    <button onclick="checkGuess('<%= user[question].name %>')">Submit Guess</button>
+<% } else { %>
+    <button onclick="checkGuess('<%= user[question] %>')">Submit Guess</button>
+<% } %>
 <p id="message"></p>
 
 <script>
@@ -11,7 +15,7 @@
         if (guess === correct) {
             document.getElementById('message').textContent = 'Congratulations! You guessed.';
         } else {
-            document.getElementById('message').textContent = `Not this time... The correct answer was ${correct}`;
+            document.getElementById('message').textContent = `Not this time... The correct answer was ${correct.name}`;
         }
         setTimeout(() => {
             location.reload();

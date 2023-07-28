@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const teams = await Team.find();
-        const users = await User.find();
+        const users = await User.find().populate('team');
         const user = users[Math.floor(Math.random() * users.length)];
         const setQuestions = ['email', 'interests', 'team'];
         const question = setQuestions[Math.floor(Math.random() * setQuestions.length)];
