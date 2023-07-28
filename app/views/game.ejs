@@ -1,21 +1,34 @@
 <% layout('layouts/boilerplate') %>
-<h1>Guess Game</h1>
-<p>Guess <%= user.name %>'s <%= question %>:</p>
-<input type="text" id="guess" />
-<% if (question == 'team') { %>
-    <button onclick="checkGuess('<%= user[question].name %>')">Submit Guess</button>
-<% } else { %>
-    <button onclick="checkGuess('<%= user[question] %>')">Submit Guess</button>
-<% } %>
-<p id="message"></p>
+<div class="container">
+    <div class="col-md-8 m-auto pt-4">
+        <div class="row">
+            <h3>Guessing game</h3>
+        </div>
+        <br>
+        <p>Guess <%= user.name %>'s <%= question %>:</p>
+        <div class="row">
+            <div class="col">
+                <input class="form-control" id="guess" />
+            </div>
+            <div class="col">
+                <% if (question == 'team') { %>
+                    <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
+                <% } else { %>
+                    <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question] %>')" style="background-color: goldenrod; color: white">Submit guess</button>
+                <% } %>
+            </div>
+        </div>
+        <p id="message"></p>
+    </div>
+</div>
 
 <script>
-    function checkGuess(correct) {
+    function checkGuess(question, correct) {
         const guess = document.getElementById('guess').value;
         if (guess === correct) {
             document.getElementById('message').textContent = 'Congratulations! You guessed.';
         } else {
-            document.getElementById('message').textContent = `Not this time... The correct answer was ${correct.name}`;
+            document.getElementById('message').textContent = `Not this time... The correct answer was '${correct}'`;
         }
         setTimeout(() => {
             location.reload();
