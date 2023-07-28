@@ -11,7 +11,10 @@
         if (guess === correct) {
             document.getElementById('message').textContent = 'Congratulations! You guessed.';
         } else {
-            document.getElementById('message').textContent = 'Not this time...';
+            document.getElementById('message').textContent = `Not this time... The correct answer was ${correct}`;
         }
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     }
 </script>
