@@ -1,28 +1,17 @@
 <% layout('layouts/boilerplate') %>
-<h1>Guess the Number Game</h1>
-<p>Try to guess the number between 1 and 100.</p>
-<input type="number" id="userGuess" />
-<button onclick="checkGuess()">Submit Guess</button>
+<h1>Guess Game</h1>
+<p>Guess <%= user.name %>'s <%= question %>:</p>
+<input type="text" id="guess" />
+<button onclick="checkGuess('<%= user[question] %>')">Submit Guess</button>
 <p id="message"></p>
 
 <script>
-// Generate a random number between 1 and 100
-const randomNumber = Math.floor(Math.random() * 100) + 1;
-
-// Function to check the user's guess
-function checkGuess() {
-    const userGuess = parseInt(document.getElementById('userGuess').value);
-
-    if (isNaN(userGuess)) {
-    document.getElementById('message').textContent = 'Please enter a valid number.';
-    } else if (userGuess < 1 || userGuess > 100) {
-    document.getElementById('message').textContent = 'Please enter a number between 1 and 100.';
-    } else if (userGuess === randomNumber) {
-    document.getElementById('message').textContent = 'Congratulations! You guessed the correct number!';
-    } else if (userGuess < randomNumber) {
-    document.getElementById('message').textContent = 'Try again. The number is higher.';
-    } else {
-    document.getElementById('message').textContent = 'Try again. The number is lower.';
+    function checkGuess(correct) {
+        const guess = document.getElementById('guess').value;
+        if (guess === correct) {
+            document.getElementById('message').textContent = 'Congratulations! You guessed.';
+        } else {
+            document.getElementById('message').textContent = 'Not this time...';
+        }
     }
-}
 </script>
