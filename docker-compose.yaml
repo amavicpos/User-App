@@ -21,8 +21,21 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ""
+      MONGO_INITDB_ROOT_PASSWORD: ""
     volumes:
       - mongodb_data:/data/db
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express_dev
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: ""
+      ME_CONFIG_BASICAUTH_PASSWORD: ""
+      ME_CONFIG_MONGODB_SERVER: mongo
 
 volumes:
   mongodb_data:
