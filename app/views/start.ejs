@@ -1,18 +1,42 @@
-<% layout('layouts/boilerplate') %>
-<div style="background: rgb(232,231,229); background: linear-gradient(0deg, rgba(232,231,229,1) 0%, rgba(218,165,32,1) 51%);">
-    <div class="container d-flex align-items-center" style="height: 90.8vh;">
-        <div class="col">
-            <div class="row justify-content-center">
-                <h1 style="color: white;">Welcome to User App!</h1>
-            </div>
-            <div class="row justify-content-center">
-                <img src=<%= srcUrl %> style="width: 3cm; alt="">
-            </div>
-            <div class="row justify-content-center">
-                <form method="GET" action="/users" autocomplete="off">
-                    <button class="btn" style="color: white; border-color: white; border-width: 1.5px; font-size: 20px;">Go to index</button>
-                </form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/878fdb28e8.js" crossorigin="anonymous"></script>
+    <style>
+        .form-control:focus{
+            outline: none;
+            border-color: goldenrod;
+            box-shadow: 0 0 10px goldenrod;
+        }
+    </style>
+</head>
+
+<body> 
+    <div style="background: rgb(232,231,229); background: linear-gradient(0deg, rgba(232,231,229,1) 0%, rgba(218,165,32,1) 51%);">
+        <div class="container d-flex align-items-center" style="height: 100vh;">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <h1 style="color: white;">Welcome to User App!</h1>
+                </div>
+                <div class="row justify-content-center">
+                    <img src=<%= srcUrl %> style="width: 3cm;">
+                </div>
+                <div class="row justify-content-center">
+                    <form method="GET" action="/users" autocomplete="off">
+                        <button class="btn" style="color: white; border-color: white; border-width: 1.5px; font-size: 20px;">Go to index</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
