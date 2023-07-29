@@ -8,10 +8,10 @@
         <% if (Object.keys(teams).length > 0) { %>
             <p>Guess <%= user.name %>'s <%= question %>:</p>
             <div class="row">
-                <div class="col">
+                <div class="col-8">
                     <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <% if (question == 'team') { %>
                         <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
                     <% } else { %>
@@ -19,7 +19,8 @@
                     <% } %>
                 </div>
             </div>
-            <p id="message"></p>
+            <br>
+            <p id="message" style="text-align: center"></p>
         <% } else { %>
             <div class="text-center"><strong>No users.</strong></div>
         <% } %>
@@ -38,9 +39,14 @@
         const guess = document.getElementById('guess').value;
         if (guess === correct) {
             document.getElementById('message').textContent = 'Congratulations! You guessed.';
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').className = 'alert alert-success';
         } else {
             document.getElementById('message').textContent = `Not this time... The correct answer was '${correct}'`;
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').className = 'alert alert-danger';
         }
+        document.getElementById('message').style.className = 'text-center';
         setTimeout(() => {
             location.reload();
         }, 5000);
