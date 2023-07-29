@@ -128,7 +128,7 @@ router.get('/show/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id).populate('picture').populate('team');
         const teams = await Team.find();
-        res.render("show", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
+        res.render("users/show", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
     } catch (error) {
         console.error('Error rendering view:', error);
         res.status(500).send('Error rendering view');
@@ -139,7 +139,7 @@ router.get('/', async (req, res) => {
 
     const users = await User.find().populate('picture');
     const teams = await Team.find();
-    res.render("index", {
+    res.render("indexes/index", {
         profiles: (Object.keys(users).length > 0 ? users : {}),
         teams: (Object.keys(teams).length > 0 ? teams : {})
     });
@@ -149,7 +149,7 @@ router.post('/search', async (req, res) => {
     const users = await User.find();
     const teams = await Team.find();
     usersMatch = users.filter(user => user.name.toLowerCase().includes(req.body.name.toLowerCase()));
-    res.render('indexSearch', {
+    res.render('indexes/indexSearch', {
         profiles: (Object.keys(usersMatch).length > 0 ? usersMatch : {}),
         teams: (Object.keys(teams).length > 0 ? teams : {}),
         query: req.body.name
@@ -161,7 +161,7 @@ router.get('/update/:id', async (req, res) => {
 
     const user = await User.findById(req.params.id).populate('picture').populate('team');
     const teams = await Team.find();
-    res.render("edit", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
+    res.render("users/edit", { user: user, teams: (Object.keys(teams).length > 0 ? teams : {}) });
 });
 
 router.post('/update/:id', upload.single('image'), async (req, res) => {
