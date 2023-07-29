@@ -9,8 +9,12 @@
             <p>Guess <%= user.name %>'s <%= question %>:</p>
             <div class="row">
                 <div class="col-8">
-                    <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
-                </div>
+                    <% if (question == 'team') { %>
+                        <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
+                    <% } else { %>
+                        <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question] %>')" />
+                    <% } %>
+                    </div>
                 <div class="col-4">
                     <% if (question == 'team') { %>
                         <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
