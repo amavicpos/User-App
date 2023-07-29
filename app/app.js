@@ -13,6 +13,7 @@ const UsersRouter = require('./routes/users');
 const TeamsRouter = require('./routes/teams');
 const StatsRouter = require('./routes/statistics');
 const GameRouter = require('./routes/game');
+const StartRouter = require('./routes/start');
 
 // EJS ENGINE
 app.engine('ejs', ejsMate);
@@ -34,8 +35,9 @@ app.use('/users', UsersRouter);
 app.use('/teams', TeamsRouter);
 app.use('/statistics', StatsRouter);
 app.use('/game', GameRouter);
+app.use('/start', StartRouter);
 app.get('/', (req, res) => {
-    res.redirect('/users')
+    res.redirect('/start')
 });
 
 

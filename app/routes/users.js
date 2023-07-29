@@ -93,7 +93,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         currentTeam.users.push(newProfile);
     }
     await currentTeam.save();
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 router.post('/example', upload.single('image'), async (req, res) => {
@@ -120,7 +120,7 @@ router.post('/example', upload.single('image'), async (req, res) => {
     await initialProfile.save();
     initialTeam.users = [initialProfile];
     await initialTeam.save();
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 // READ
@@ -262,7 +262,7 @@ router.post('/update/:id', upload.single('image'), async (req, res) => {
             await Team.findByIdAndDelete(previousTeam._id);
         }
     }
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 // DELETE
@@ -280,7 +280,7 @@ router.post('/delete/:id', async (req, res) => {
     if (previousTeam.users.length == 0) {
         await Team.findByIdAndDelete(previousTeam._id);
     }
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 module.exports = router;
