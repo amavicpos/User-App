@@ -5,20 +5,25 @@
             <h3>Guessing game</h3>
         </div>
         <br>
-        <p>Guess <%= user.name %>'s <%= question %>:</p>
-        <div class="row">
-            <div class="col">
-                <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
+        <% if (Object.keys(teams).length > 0) { %>
+            <p>Guess <%= user.name %>'s <%= question %>:</p>
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
+                </div>
+                <div class="col">
+                    <% if (question == 'team') { %>
+                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
+                    <% } else { %>
+                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question] %>')" style="background-color: goldenrod; color: white">Submit guess</button>
+                    <% } %>
+                </div>
             </div>
-            <div class="col">
-                <% if (question == 'team') { %>
-                    <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
-                <% } else { %>
-                    <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question] %>')" style="background-color: goldenrod; color: white">Submit guess</button>
-                <% } %>
-            </div>
-        </div>
-        <p id="message"></p>
+            <p id="message"></p>
+        <% } else { %>
+            <div class="text-center"><strong>No users.</strong></div>
+        <% } %>
+
     </div>
 </div>
 
