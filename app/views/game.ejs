@@ -8,7 +8,7 @@
         <p>Guess <%= user.name %>'s <%= question %>:</p>
         <div class="row">
             <div class="col">
-                <input class="form-control" id="guess" />
+                <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
             </div>
             <div class="col">
                 <% if (question == 'team') { %>
@@ -23,6 +23,12 @@
 </div>
 
 <script>
+    function checkEnter(event, question, correct) {
+      if (event.keyCode === 13) {
+        checkGuess(question, correct);
+      }
+    }
+
     function checkGuess(question, correct) {
         const guess = document.getElementById('guess').value;
         if (guess === correct) {
