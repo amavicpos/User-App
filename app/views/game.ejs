@@ -49,7 +49,7 @@
 
     function checkGuess(question, correct) {
         const guess = document.getElementById('guess').value;
-        if (guess === correct) {
+        if (guess.toLowerCase() === correct.toLowerCase()) {
             document.getElementById('message').textContent = 'Congratulations! You guessed.';
             document.getElementById('message').style.color = 'green';
             document.getElementById('message').className = 'alert alert-success';
