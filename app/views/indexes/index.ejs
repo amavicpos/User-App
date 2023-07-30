@@ -1,96 +1,91 @@
 <% layout('layouts/boilerplate') %>
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 m-auto pt-4">
-            <div class="row">
-                <h3>New user</h3>
-            </div>
-            <br>
-            <div class="row">
-                <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
-                    <div class="d-flex justify-content-around">
-                        <div class="col-md-10">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" required autofocus />
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" name="email" class="form-control" placeholder="Email" required />
-                                </div>
-                                <div class="col-md-3" style="align-items: center; display: flex; flex-direction: column;">
-                                    <input type="text" name="interests" id="interests" class="form-control" placeholder="Interests" required pattern=".+(?:,\s*[^,]+)*$" />
-                                    <label for="interests" style="color: grey; font-size: 14px;"></label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" name="team" class="form-control" placeholder="Team" required />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <input type="text" name="biography" class="form-control" placeholder="Biography" />
-                                </div>
-                                <div class="col-md-2">
-                                    <input type="file" name="image" accept="image/*">
-                                </div>
-                            </div>
+    <div class="col-md-8 m-auto pt-4 justify-content-center">
+        <div class="row justify-content-center">
+            <h3 style="text-align: center;">New user</h3>
+        </div>
+        <br>
+        <form action="/users" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <div class="d-flex justify-content-around">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required autofocus />
                         </div>
-                        <div class="col-md-2 justify-content-center">
-                            <button type="submit" class="btn" style="background-color: goldenrod; color: white">Submit</button>
+                        <div class="col-md-3">
+                            <input type="text" name="email" class="form-control" placeholder="Email" required />
+                        </div>
+                        <div class="col-md-3" style="align-items: center; display: flex; flex-direction: column;">
+                            <input type="text" name="interests" id="interests" class="form-control" placeholder="Interests" required pattern=".+(?:,\s*[^,]+)*$" />
+                            <label for="interests" style="color: grey; font-size: 14px;"></label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="team" class="form-control" placeholder="Team" required />
                         </div>
                     </div>
-                </form>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input type="text" name="biography" class="form-control" placeholder="Biography" />
+                        </div>
+                        <div class="col-md-2">
+                            <input type="file" name="image" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 justify-content-center">
+                    <button type="submit" class="btn" style="background-color: goldenrod; color: white">Submit</button>
+                </div>
             </div>
-            <br>
-            <br>
-            <div class="row">
-                <h3>All users</h3>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-12">
-                    <% if(Object.keys(profiles).length > 0) { %>
-                        <div class="card-columns">
-                            <% profiles.forEach(user => { %>
-                                <div class="card text-center">
-                                    <% if (user.picture) { %>
-                                        <img class="card-img-top" src=<%= user.picture.image.srcUrl %> style="max-width: 100%" alt=<%= user.name %>>
-                                    <% } %>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= user.name %></h5>
-                                        <div class="row">
-                                            <div class="card-text mx-auto">
-                                                <a style="color: green;" href="/users/update/<%= user._id %>">
-                                                    <i class="fa-solid fa-pen-nib"></i>
-                                                </a>
-                                            </div>
-                                            <div class="card-text mx-auto">
-                                                <a style="color: blue;" href="/users/show/<%= user._id %>">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                            </div>
-                                            <div class="card-text mx-auto">
-                                                <a style="color: red;" href="javascript:;" onclick="this.children[0].submit()">
-                                                    <form method="POST" action="/users/delete/<%= user._id %>">
-                                                        <input type="hidden" name="_key" value="<%= user._id %>" />
-                                                    </form>
-                                                    <i class="fa fa-trash-o"></i>
-                                                </a>
-                                            </div>
+        </form>
+        <div style="height: 30px;"></div>
+        <div class="row justify-content-center">
+            <h3 style="text-align: center;">All users</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <% if(Object.keys(profiles).length > 0) { %>
+                    <div class="card-columns">
+                        <% profiles.forEach(user => { %>
+                            <div class="card text-center">
+                                <% if (user.picture) { %>
+                                    <img class="card-img-top" src=<%= user.picture.image.srcUrl %> style="max-width: 100%" alt=<%= user.name %>>
+                                <% } %>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= user.name %></h5>
+                                    <div class="row">
+                                        <div class="card-text mx-auto">
+                                            <a style="color: green;" href="/users/update/<%= user._id %>">
+                                                <i class="fa-solid fa-pen-nib"></i>
+                                            </a>
+                                        </div>
+                                        <div class="card-text mx-auto">
+                                            <a style="color: blue;" href="/users/show/<%= user._id %>">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                        </div>
+                                        <div class="card-text mx-auto">
+                                            <a style="color: red;" href="javascript:;" onclick="this.children[0].submit()">
+                                                <form method="POST" action="/users/delete/<%= user._id %>">
+                                                    <input type="hidden" name="_key" value="<%= user._id %>" />
+                                                </form>
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            <% }) %>
-                        </div>
-                    <% } else { %>
-                        <div class="text-center"><strong>No users.</strong></div>
-                        <br>
-                        <div class="row justify-content-center">
-                            <form action="/users/example" method="POST">
-                                <button type="submit" class="btn" style="background-color: goldenrod; color: white">Create example user</button>
-                            </form>
-                        </div>
-                    <% } %>
-                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <div class="text-center"><strong>No users.</strong></div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <form action="/users/example" method="POST">
+                            <button type="submit" class="btn" style="background-color: goldenrod; color: white">Create example user</button>
+                        </form>
+                    </div>
+                <% } %>
             </div>
         </div>
     </div>
