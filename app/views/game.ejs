@@ -24,7 +24,7 @@
                 </div>
             </div>
             <br>
-            <div class="row" style="padding-left: 10%;">
+            <div class="row" style="padding-left: 10%; height: 60px">
                 <p id="message" style="text-align: center;"></p>
             </div>
         <% } else { %>
@@ -56,7 +56,7 @@
             document.getElementById('message').style.color = 'green';
             document.getElementById('message').className = 'alert alert-success';
         } else {
-            document.getElementById('message').textContent = `Not this time... The correct answer was '${correct}'`;
+            document.getElementById('message').textContent = `Not this time... The correct answer is '${correct}'.`;
             document.getElementById('message').style.color = 'red';
             document.getElementById('message').className = 'alert alert-danger';
         }
