@@ -1,38 +1,44 @@
 <% layout('layouts/boilerplate') %>
 <div class="container">
-    <div class="col-md-8 m-auto pt-4">
-        <div class="row">
-            <h3>Guessing game</h3>
+    <div class="col-md-8 m-auto">
+        <div class="row" style="height: 50px;"></div>
+        <div class="row justify-content-center">
+            <h3 style="text-align: center;">Guessing game</h3>
         </div>
         <br>
         <% if (Object.keys(teams).length > 0) { %>
             <p>Guess <%= user.name %>'s <%= question %>:</p>
             <div class="row">
-                <div class="col-8">
+                <div class="col">
                     <% if (question == 'team') { %>
                         <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question].name %>')" />
                     <% } else { %>
                         <input class="form-control" id="guess" onkeypress="checkEnter(event, '<%= question %>', '<%= user[question] %>')" />
                     <% } %>
-                    </div>
-                <div class="col-4">
-                    <% if (question == 'team') { %>
-                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="background-color: goldenrod; color: white">Submit guess</button>
-                    <% } else { %>
-                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question] %>')" style="background-color: goldenrod; color: white">Submit guess</button>
-                    <% } %>
                 </div>
             </div>
             <br>
-            <div class="row" style="padding-left: 10%; height: 60px">
-                <p id="message" style="text-align: center;"></p>
+            <div class="row">
+                <div class="col" style="width: 50%;">
+                    <% if (question == 'team') { %>
+                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question].name %>')" style="width: 100%; background-color: goldenrod; color: white">Submit guess</button>
+                    <% } else { %>
+                        <button class="btn" onclick="checkGuess('<%= question %>', '<%= user[question] %>')" style="width: 100%; background-color: goldenrod; color: white">Submit guess</button>
+                    <% } %>
+                </div>
+                <div class="col" style="width: 50%;">
+                    <button class="btn" id="back" style="width: 100%; background-color: goldenrod; color: white">Back</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <p id="message" style="text-align: center;"></p>
+                </div>
             </div>
         <% } else { %>
             <div class="text-center"><strong>No users.</strong></div>
         <% } %>
-        <div class="mt-3 row">
-            <button class="btn" id="back" style="background-color: goldenrod; color: white">Back</button>
-        </div>
     </div>
 </div>
 
