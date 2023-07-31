@@ -4,20 +4,20 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    container_name: node_app_dev
+    container_name: node_app
     restart: always
     ports:
       - "3000:3000"
     volumes:
       - ./app:/app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - MONGO_URI=mongodb://mongo:27017/userapp
     depends_on:
       - mongo
   mongo:
     image: mongo
-    container_name: mongodb_dev
+    container_name: mongodb
     restart: always
     ports:
       - "27017:27017"
@@ -28,7 +28,7 @@ services:
       - mongodb_data:/data/db
   mongo-express:
     image: mongo-express
-    container_name: mongo_express_dev
+    container_name: mongo_express
     restart: always
     ports:
       - "8081:8081"
