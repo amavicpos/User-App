@@ -1,4 +1,3 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParse = require('body-parser');
 const express = require('express');
@@ -6,7 +5,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const ejsMate = require('ejs-mate');
 const app = express();
-// npm install mongoose body-parser express ejs fs multer path ejs-mate serve-favicon dotenv
+// npm install mongoose body-parser express ejs fs multer path ejs-mate serve-favicon
 
 // ROUTE
 const UsersRouter = require('./routes/users');
@@ -25,7 +24,7 @@ app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: false }));
 
 // DATABASE
-const db = process.env.MONGO_URI || 'mongodb://localhost:27017/userapp';
+const db = 'mongodb://mongo:27017/userapp' || 'mongodb://localhost:27017/userapp';
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log(`Mongodb Connected`))
@@ -41,7 +40,7 @@ app.get('/', (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

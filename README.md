@@ -20,4 +20,4 @@ An app to store and organise information about users.
 - dotenv
 
 ## Build/Deploy instructions
-The image can be built by pulling it from https://hub.docker.com/r/amavicpos/devops-challenge using the docker-compose-yaml inside /dockerhub OR using the code in the repository (either by using docker-compose or running node app.js inside /app).
+The image can be built by pulling it from https://hub.docker.com/r/amavicpos/user-app using the docker-compose-yaml inside /dockerhub OR using the code in the repository (either by using docker-compose or running node app.js inside /app).
