@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark navbar-expand-sm" style="background-color: goldenrod;">
+    <a class="navbar-brand" href="/users">User App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/users">New/Index</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/statistics">Statistics</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/game">Game</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teams</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown">
+            <% if(Object.keys(teams).length> 0) { %>
+                <% teams.forEach(team => { %>
+                    <a class="dropdown-item" href="/teams/show/<%= team._id %>"><%= team.name %></a>
+                <% }) %>
+            <% } %>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-md-0" method="POST" action="/users/search" autocomplete="off">
+        <input class="form-control" type="text" placeholder="Search by name" name="name">
+        <button type="submit" class="btn" style="width: 5px;"><i class="fa-solid fa-magnifying-glass" style="color: white;"></i></button>
+    </form>
+    </div>
+</nav>

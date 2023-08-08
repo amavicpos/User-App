@@ -1,5 +1,5 @@
 # User App
-An app to store and organise information about users. The app was created to practice the content learnt in the Code First Girls Introduction to DevOps MOOC.
+An app to store and organise information about users.
 
 ## Features
 - Edit, show and delete information about a user.
