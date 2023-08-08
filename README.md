@@ -1,11 +1,21 @@
 # User App
-An app to store and organise information about users.
+An app to store and organise information about users. The app was created to practice the content learnt in the Code First Girls Introduction to DevOps MOOC.
 
-## Major functions
-- Edit, show, delete information about a user.
+## Features
+- Edit, show and delete information about a user.
 - Show statistics of all users.
 - Guessing game to get to know the users.
-- List team members and search by name.
+- List team members and search users by name.
+
+## Build/Deploy instructions
+- Run inside /dockerhub to pull the image from Docker Hub or run inside main repository folder to create image from the repository files:
+```bash
+docker-compose up
+```
+- Run inside /app using Mongo locally:
+```bash
+node app.js
+```
 
 ## Dependencies
 - mongoose
@@ -17,7 +27,3 @@ An app to store and organise information about users.
 - path
 - ejs-mate
 - serve-favicon
-- dotenv
-
-## Build/Deploy instructions
-The image can be built by pulling it from https://hub.docker.com/r/amavicpos/user-app using the docker-compose-yaml inside /dockerhub OR using the code in the repository (either by using docker-compose or running node app.js inside /app).
