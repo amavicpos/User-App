@@ -12,18 +12,19 @@ An app to store and organise information about users. The app was created to pra
 ```bash
 docker-compose up
 ```
-- Run inside /app using Mongo locally:
+- Run inside /app using MongoDB locally:
 ```bash
 node app.js
 ```
 
 ## Dependencies
-- mongoose
 - body-parser
-- express
+- dotenv
 - ejs
+- ejs-mate
+- express
 - fs
+- mongoose
 - multer
 - path
-- ejs-mate
 - serve-favicon
