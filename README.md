@@ -1,5 +1,5 @@
 # User App
-An app to store and organise information about users.
+An app to store and organise information about users, coded from scratch.
 
 ## Features
 - Edit, show and delete information about a user.
